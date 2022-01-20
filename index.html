@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- css style -->
+    <script src="https://kit.fontawesome.com/7e607ca3cf.js" crossorigin="anonymous"></script>
+    <!--font awsome-->
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class='burgers' style="flex-grow: 1">
+            <h2>Burgers</h2>
+            <button type='button' onclick="addToList({dish:'Texas Burger', price:100})">Texas Burger</button>
+            <button type='button' onclick="addToList({dish:'Royal Burger', price:120})">Royal Burger</button>
+            <button type='button' onclick="addToList({dish:'Spicy Burger', price:140})">Spicy Burger</button>
+            <button type='button' onclick="addToList({dish:'Mushroom Burger', price:140})">Mushroom Burger</button>
+            <button type='button' onclick="addToList({dish:'Smoky Burger', price:140})">Smoky Burger</button>
+        </div>
+        <div class='sides' style="flex-grow: 1">
+            <h2>Sides</h2>
+            <button type='button' onclick="addToList({dish:'French Fries', price:50})">French Fries</button>
+            <button type='button' onclick="addToList({dish:'Sweet Potato', price:60})">Sweet Potato</button>
+            <button type='button' onclick="addToList({dish:'Chili Cheese', price:70})">Chili Cheese</button>
+            <button type='button' onclick="addToList({dish:'chicken Nuggets', price:70})">chicken Nuggets</button>
+        </div>
+        <div class='beverages' style="flex-grow: 1">
+            <h2>Beverages</h2>
+            <button type='button' onclick="addToList({dish:'Mineral Water', price:10})">Mineral Water</button>
+            <button type='button' onclick="addToList({dish:'Coca Cola', price:20})">Coca Cola</button>
+            <button type='button' onclick="addToList({dish:'Fanta', price:20})">Fanta</button>
+        </div>
+    </div>
+    <!-- table -->
+    <div id="demo"></div>
+
+    <div class="print-clean">
+        <button class='clean' type='button' onclick="deleteAll()">Clean</button>
+        <button class='print' type='button' onclick="print()">Print</button>
+    </div>
+
+
+
+    <script>
+        let bill = [];
+        let total = 0;
+        let myID = 1;
+        const addToList = (data) => {
+            document.querySelector('.print-clean').style.display = 'flex';
+            bill.push(data);
+            data.id = myID;
+            myID++;
+            console.log(data);
+            total += data.price;
+            let result = `<table id="billTable">
+                                   <tr>
+                                        <th>Row</th>
+                                        <th>Item</th>
+                                        <th>Price</th>
+                                        <th>Delete</th>
+                                   </tr>`
+            for (let i = 0; i < bill.length; i++) {
+                result += `<tr>
+                                                       <td>${bill[i].id}</td>
+                                                       <td>${bill[i].dish}</td>
+                                                       <td>${bill[i].price} $</td>
+                                                       <td><button type='button' onclick="deleteItem(${bill[i].id})">✘</button></td>
+
+                                                  </tr>`
+            }
+            result += `<tr >
+                                                       <td>${myID-1}</td>
+                                                       <td>Total</td>
+                                                       <td>${total} $</td>
+                                                       <td></td>
+                              </table>`
+            document.getElementById('demo').innerHTML = result;
+        }
+
+        function deleteItem(itemID) {
+            let index = bill.findIndex(myFunction);
+
+            function myFunction(value, index, array) {
+                return value.id === itemID;
+            }
+            myID--
+            total -= bill[index].price
+            bill.splice(index, 1);
+            for (let j = index; j < bill.length; j++) { //it is written to alter id of indexes after delete an index
+                bill[j].id = j + 1;
+            }
+            let result = `<table id="billTable">
+                                   <tr>
+                                        <th>Row</th>
+                                        <th>Item</th>
+                                        <th>Price</th>
+                                        <th>Delete</th>
+                                   </tr>`
+            for (let i = 0; i < bill.length; i++) {
+                result += `<tr>
+                                                       <td>${bill[i].id}</td>
+                                                       <td>${bill[i].dish}</td>
+                                                       <td>${bill[i].price} $</td>
+                                                       <td><button type='button' onclick="deleteItem(${bill[i].id})">✘</button></td>
+
+                                                  </tr>`
+            }
+            result += `<tr >
+                                                       <td>${myID-1}</td>
+                                                       <td>Total</td>
+                                                       <td>${total} $</td>
+                                                       <td></td>
+                              </table>`
+            document.getElementById('demo').innerHTML = result;
+        }
+
+        function deleteAll() {
+            bill.length = 0
+            total = 0;
+            myID = 1;
+            document.querySelector('.print-clean').style.display = 'none';
+            document.getElementById('demo').innerHTML = '';
+        }
+    </script>
+</body>
+
+</html>

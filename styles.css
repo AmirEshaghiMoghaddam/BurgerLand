@@ -1,0 +1,156 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+
+/* Menu */
+.flex-container {
+  width: 100%;
+  background-color: #ccc;
+  display: flex;
+  /* justify-content: ; */
+}
+
+.flex-container > div {
+  padding: 20px;
+  font-size: 25px;
+}
+.flex-container > div:hover {
+  background-color: #eee;
+}
+.flex-container > div > h2 {
+  margin-bottom: 10px;
+}
+
+/* Table */
+#billTable {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#billTable th {
+  border: 1px solid tomato;
+  padding: 8px;
+}
+#billTable td {
+  padding: 8px;
+}
+
+#billTable td:nth-child(1),
+#billTable td:nth-child(4) {
+  width: 90px;
+  text-align: center;
+}
+#billTable td:nth-child(4) button {
+  padding: 2px 6px;
+  margin: 0px auto;
+  text-align: center;
+  background-color: white;
+  border: none;
+  color: tomato;
+  border: 1px solid tomato;
+  font-size: 0.7rem;
+}
+#billTable td:nth-child(4) button.btn-del {
+  color: white;
+  background-color: tomato;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+#billTable td:nth-child(4) button:hover {
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+}
+#billTable tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#billTable tr:hover {
+  background-color: #ddd;
+}
+
+#billTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: tomato;
+  color: white;
+  font-size: 1.4rem;
+}
+#billTable tr:last-child {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: tomato;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 900;
+}
+.burgers button,
+.sides button,
+.beverages button {
+  padding: 2px 6px;
+  margin: 4px auto;
+  text-align: center;
+  background-color: white;
+  border: none;
+  color: tomato;
+  border: 1px solid tomato;
+  font-size: 0.9rem;
+}
+.burgers button:hover,
+.sides button:hover,
+.beverages button:hover {
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+}
+
+.print-clean {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+}
+.print-clean .clean {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 16px;
+  padding-right: 6px;
+  text-align: center;
+  background-color: white;
+  color: tomato;
+  border: 1px solid tomato;
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.print-clean .clean:hover {
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+}
+.print-clean .print {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 6px;
+  padding-right: 16px;
+  text-align: center;
+  background-color: white;
+  color: tomato;
+  border: 1px solid tomato;
+  font-size: 1.2rem;
+  letter-spacing: 1.2px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+.print-clean .print:hover {
+  background-color: tomato;
+  color: white;
+  cursor: pointer;
+}
